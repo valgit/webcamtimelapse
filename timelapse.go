@@ -9,6 +9,7 @@ func main() {
 	histo := GetHistory()
 	for _, img := range histo {
 		fmt.Printf("%s\n\tsrc: %s\n\tthumb: %s\n", img.Date, img.Source, img.Thumbnail)
+		GetThumbnail(img)
 	}
 
 	fmt.Printf("tiling at : \n")
