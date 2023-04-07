@@ -54,13 +54,15 @@ func GetHistory() []Image {
  */
 func GetThumbnail(t Image) error {
 	url := "https:" + t.Thumbnail
+	fileName := fmt.Sprintf("%s_%s.jpg", t.Date.Format("2006-01-02"), t.ID)
+
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println("Error downloading thumbnail:", err)
 		return err
 	}
 	defer resp.Body.Close()
-	file, err := os.Create(fmt.Sprintf("%s.jpg", t.ID))
+	file, err := os.Create(fileName)
 	if err != nil {
 		fmt.Println("Error creating file:", err)
 		return err
